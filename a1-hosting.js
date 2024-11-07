@@ -29,3 +29,6 @@ function demo() {
 
 // in javascript everything exest in execution box, which has 2 phase 
 // 1st one in memory allocation phase and 2nd one is execution phase
+
+
+

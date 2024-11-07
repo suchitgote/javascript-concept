@@ -67,3 +67,6 @@ const output3 = users.reduce((acc,cur)=>{
 },{})
 console.log(output3)
 console.log(users)
+
+
+

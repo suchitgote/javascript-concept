@@ -1,13 +1,16 @@
-// shallowAndDeepCopy
 
-console.log('shallow Copy');
-const originalArray = [1, [2, 3], 4];
-const shallowCopy = [...originalArray];
 
-console.log('originalArray =',originalArray);  // Output: [1, ['X', 3], 4]
-console.log('shallowCopy =',shallowCopy, '/n');  // Output: [1, ['X', 3], 4]
+const user = { name : 'suchit' , location : { city :'wardha' } , age : 22}
+const shalowUser = {...user , gender : "male"}
+// const shalowUser = JSON.parse( JSON.stringify ({...user , gender : "male"})) // deep copy
 
-shallowCopy[1][0] = 'X';
+console.log('user       =',user);
+console.log('shalowUser =',shalowUser);
+console.log('....................');
 
-console.log('originalArray =',originalArray);  // Output: [1, ['X', 3], 4]
-console.log('shallowCopy =',shallowCopy);    // Output: [1, ['X', 3],
+shalowUser.name = 'gote';
+shalowUser.age = 23;
+shalowUser.location.city = 'pune';
+
+console.log('user       =',user);
+console.log('shalowUser =',shalowUser);

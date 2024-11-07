@@ -14,26 +14,26 @@
 // // 3 Rejected: The asynchronous operation encountered an error or was unsuccessful, and the promise has a reason for the failure.
 
 
-// const myPromise = new Promise((resolve, reject) => {
-//     // Simulate an asynchronous operation, such as fetching data
-//     setTimeout(() => {
-//       const success = !true; // Change to false to simulate a failure
-//       if (success) {
-//         resolve("Operation completed successfully!");
-//       } else {
-//         reject("Error: Operation failed!");
-//       }
-//     }, 2000); // Simulating a delay of 2 seconds
-//   });
+const myPromise = new Promise((resolve, reject) => {
+    // Simulate an asynchronous operation, such as fetching data
+    setTimeout(() => {
+      const success = !true; // Change to false to simulate a failure
+      if (success) {
+        resolve("Operation completed successfully!");
+      } else {
+        reject("Error: Operation failed!");
+      }
+    }, 2000); // Simulating a delay of 2 seconds
+  });
   
-//   // Consuming the promise
-//   myPromise
-//     .then((result) => {
-//       console.log(result); // Output: Operation completed successfully!
-//     })
-//     .catch((error) => {
-//       console.error(error); // Output if there's an error: Error: Operation failed!
-//     });
+  // Consuming the promise
+  myPromise
+    .then((result) => {
+      console.log(result); // Output: Operation completed successfully!
+    })
+    .catch((error) => {
+      console.error(error); // Output if there's an error: Error: Operation failed!
+    });
   
 
 
@@ -79,31 +79,31 @@ function fetchdata(){
 
 
 
-// // Callback hell example without promises
-// function fetchData(callback) {
-//     setTimeout(() => {
-//       const data1 = 'First set of data';
-//       callback(data1, (data2, callback) => {
-//         setTimeout(() => {
-//           const data3 = 'Additional data';
-//           callback(data3);
-//         }, 1000);
-//       });
-//     }, 1000);
-//   }
+// Callback hell example without promises
+function fetchData(callback) {
+    setTimeout(() => {
+      const data1 = 'First set of data';
+      callback(data1, (data2, callback) => {
+        setTimeout(() => {
+          const data3 = 'Additional data';
+          callback(data3);
+        }, 1000);
+      });
+    }, 1000);
+  }
   
-//   // Usage of the callback hell function
-//   fetchData((result1, callback1) => {
-//     console.log(result1);
+  // Usage of the callback hell function
+  fetchData((result1, callback1) => {
+    console.log(result1);
     
-//     callback1((result2,callback2) => {
-//       console.log(result2);
+    callback1((result2,callback2) => {
+      console.log(result2);
       
-//       callback2((result3) => {
-//         console.log(result3);
-//       });
-//     });
-//   });
+      callback2((result3) => {
+        console.log(result3);
+      });
+    });
+  });
   
 
 
@@ -151,3 +151,97 @@ fetchData()
 .catch((err)=>{
 console.log('err =', err);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function userData() {
+    console.log('userData api function call');
+    return new Promise((resolve , reject)=>{
+        const value = true;
+        if(value){
+            resolve('user data send')
+        }else{
+            reject('error')
+        }
+    })
+}
+
+function userData2() {
+    console.log('userData2 api function call');
+    return new Promise((resolve , reject)=>{
+        const value = true;
+        if(value){
+            resolve('user2 data send')
+        }else{
+            reject('error2')
+        }
+    })
+}
+
+function userData3() {
+    console.log('userData3 api function call');
+    return new Promise((resolve , reject)=>{
+        const value = true;
+        if(value){
+            resolve('user3 data send')
+        }else{
+            reject('error3')
+        }
+    })
+}
+
+
+
+// const result =  
+// userData()
+// .then((data)=>{
+//     console.log('data =', data);
+//     return userData2()
+// })
+// .then((data)=>{
+//     console.log('data =', data);
+//     return userData3()
+// })
+// .then((data2)=>{
+//     console.log('data2 =', data2);
+//     return data2
+// })
+// .catch((err)=>{
+//     console.log('result error =', err);
+// })
+
+const result2  = async()=>{
+    try {
+        const res = await userData()
+        console.log('res =', res);
+
+        const res2 = await userData2()
+        console.log('res2 =', res2);
+
+        const res3 = await userData3()
+        console.log('res3 =', res3);
+        
+    } catch (error) {
+        console.log('result error =', error);
+    }
+
+}
+
+result2()

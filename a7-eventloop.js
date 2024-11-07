@@ -38,3 +38,23 @@
 // ```
 
 // In this example, "Start" and "End" will be logged first, and after a 2-second delay, "Timeout callback" will be logged. The event loop ensures that the setTimeout callback is executed asynchronously, allowing other code to run in the meantime.
+
+
+
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Macrotask: setTimeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Microtask: Promise.then");
+});
+
+console.log("End");
+
+
+// Start
+// End
+// Microtask: Promise.then
+// Macrotask: setTimeout
